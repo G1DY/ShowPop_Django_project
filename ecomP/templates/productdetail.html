@@ -1,0 +1,22 @@
+{% extends 'base.html'%}
+{%block title%}{{product.product_title}}{%endblock%}
+
+{%block content%}
+<div class="container">
+    <h3>Product: {{product.product_title}}</h3><hr>
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{{product.product_photo.url}}" alt="" class="img-fluid">
+        </div>
+        <div class="col-md-6">
+            <h4>{{product.product_title}} (Viewed {{product.view_count}} times)</h4><hr>
+            <h5>Category: {{product.category}}</h5>
+            <h5>Price: Ksh. {{product.selling_price}}</h5>
+            <a href="{% url 'app:addtocart' product.id%}" class="btn btn-info">Add To Cart</a><hr>
+            <p class="text-info">Warranty: {{product.warranty}}</p>
+            <p class="text-info">Return Policy: {{product.return_policy}}</p>
+            <p>{{product.description}}</p>
+        </div>
+    </div>    
+</div>
+{%endblock%}

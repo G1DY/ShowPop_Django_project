@@ -1,0 +1,54 @@
+{% extends 'base.html'%}
+{%block title%}{%endblock%}
+
+{%block content%}
+<div class="container">
+    <div class='row'>
+        <div class="col-md-8">
+            <h4>Items in My Cart</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Serial No</th>
+                        {% comment %} <th>Product Image</th> {% endcomment %}
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Rate</th>
+                        <th>Subtotal</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for cp in cart.cartitem_set.all%}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        {% comment %} <td>{{cp.product.product_photo}}</td> {% endcomment %}
+                        <td>{{cp.product.product_title}}</td>
+                        <td>{{cp.quantity}}</td>
+                        <td>{{cp.rate}}</td>
+                        <td>{{cp.subtotal}}</td>
+                        <td>
+                            <a href="{% url 'app:managecart' cp.id %}?action=inc" class="btn btn-primary">+</a>
+                            <a href="{% url 'app:managecart' cp.id %}?action=dcr" class="btn btn-warning">-</a>
+                            <a href="{% url 'app:managecart' cp.id %}?action=rmv" class="btn btn-danger">x</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    <tr>
+                        <th colspan ='4' class='text-right'>Total</th>
+                        <th>Ksh. {{cart.total}}</th>
+                        {% if cart.cartitem_set.all %}
+                        <th><a href="{% url 'app:emptycart'%}">Empty Cart</a></th>
+                        {% endif %}
+                    </tr>
+                </tbody>
+            </table>
+        {% if cart.cartitem_set.all %}
+            <tr>
+                <th><a href="{% url 'app:checkout'%}" class="btn btn-info">Checkout</a></th>
+            </tr>
+        {% endif %}
+        </div>
+    </div>
+</div>
+{%endblock%}
