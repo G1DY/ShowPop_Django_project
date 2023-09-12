@@ -29,6 +29,6 @@ ShoePop is a Django web app hosted on the ALX remote server. It is an online sho
 
 - **Landing Page***
 
-- ![image](
+- ![image](Screenshot%20(20).png)
 
 
