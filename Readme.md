@@ -35,7 +35,7 @@ ShoePop is a Django web app hosted on the ALX remote server. It is an online sho
 We hosted the project on the alx server. We had to modify the gunicorn configuration file and the nginx configuration files
 
 ```
-t]
+[unit]
 Description=Gunicorn daemon for Your Django Project
 After=network.target
 
